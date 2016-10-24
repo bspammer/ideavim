@@ -185,14 +185,14 @@ public class VimSurroundExtension extends VimNonDisposableExtension {
       final List<KeyStroke> oldValue = getRegister(REGISTER);
 
       // Extract the inner value
-      perform("di" + pick(charFrom), editor);
+      perform("T" + pick(charFrom) + "dt" + pick(charFrom), editor);
       List<KeyStroke> innerValue = getRegister(REGISTER);
       if (innerValue == null) {
         innerValue = new ArrayList<KeyStroke>();
       }
 
       // Delete the surrounding
-      perform("da" + pick(charFrom), editor);
+      perform("hxx", editor);
 
       // Insert the surrounding characters and paste
       if (newSurround != null) {
